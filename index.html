@@ -1245,6 +1245,47 @@ function openGoogleMaps() {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializeLocationSection);
 
+<!-- Add this to your existing JavaScript code -->
+document.addEventListener('DOMContentLoaded', function() {
+    const enterButton = document.querySelector('.enterBtn');
+    
+    enterButton.addEventListener('click', function() {
+        const grandDebutSection = document.querySelector('#grand-debut');
+        
+        if (grandDebutSection) {
+            // Add a slight delay for better visual effect
+            setTimeout(() => {
+                const offset = 100; // Adjust this value to control the scroll position
+                const targetPosition = grandDebutSection.getBoundingClientRect().top + window.pageYOffset - offset;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }, 200);
+        }
+    });
+
+    // Add hover animation styles
+    enterButton.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.05)';
+        this.style.background = 'rgba(158, 202, 245, 0.3)';
+    });
+
+    enterButton.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+        this.style.background = 'transparent';
+    });
+
+    // Add click animation
+    enterButton.addEventListener('mousedown', function() {
+        this.style.transform = 'scale(0.95)';
+    });
+
+    enterButton.addEventListener('mouseup', function() {
+        this.style.transform = 'scale(1.05)';
+    });
+});
 
     </script>
 
